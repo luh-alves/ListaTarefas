@@ -1,19 +1,40 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler'
+import * as React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-export default function App() {
+import LoginScreen from './src/screen/LoginScreen'
+import RegisterScreen from './src/screen/RegisterScreen'
+import ListScreen from './src/screen/ListScreen'
+import { createStore } from './node_modules/redux'
+import {Provider} from 'react-redux'
+import taskAdd from './src/reducers'
+
+const Stack = createStackNavigator()
+const store = createStore(taskAdd)
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+   <Provider store={store}>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="LoginScreen" screenOptions={{ headerShown: false, transitionSpec: { open: config, close: config } }} >
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+        <Stack.Screen name="ListScreen" component={ListScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    </Provider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 300,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
   },
-});
+}
+export default App
