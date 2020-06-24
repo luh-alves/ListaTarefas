@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 
 
-const Buttonlogin = (props) => {
+const ButtonDefault = (props) => {
     return (
         <TouchableOpacity style={styles.styleButton}
             onPress={props.onPress}
@@ -17,16 +17,12 @@ const styles = {
         alignItems: 'center',
         flex: 1,
     },
-    containerButton: {
-        flex: 2,
-        justifyContent: 'space-around',
-    },
     styleButton: {
         borderColor: '#c4c4c4',
         height: 50,
-        width: 225,
-        
+        width: 225,        
         margin: 20,
+        borderRadius: 3,
         borderWidth: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -36,7 +32,7 @@ const styles = {
         },
         shadowOpacity: 0.37,
         shadowRadius: 7.49,
-        elevation: 12,
+        elevation: 10,
     },
     buttonText: {
         textAlign: "center",
@@ -45,4 +41,4 @@ const styles = {
     }
 
 }
-export default Buttonlogin;
+export default ButtonDefault  

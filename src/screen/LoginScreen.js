@@ -1,12 +1,11 @@
 import React from 'react'
 import { View, Image } from 'react-native'
-import ButtonLogin from '../components/ButtonLogin'
+import ButtonDefault from '../components/ButtonDefault'
 import logo4 from '../image/logo4.png'
-import { Icon } from 'react-native-elements'
-import { Input } from 'react-native-elements';
+import InputDefault from '../components/InputDefault';
+import { Button } from 'react-native-elements';
 
 const LoginScreen = ({ navigation }) => {
-
     return (
         <View style={styles.container} >
             <View style={styles.logoView}>
@@ -16,26 +15,21 @@ const LoginScreen = ({ navigation }) => {
                 />
             </View>
             <View>
-                <Input
-                    placeholder='Email'
-                    leftIcon={
-                        <Icon
-                            name='email'
-                            type='material'
-                            size={24}
-                            color='black'
-                        />
-                    }
-                />
+                <InputDefault placeholder={'Email'} name={'email'} type={'material'} />
             </View>
 
             <View style={styles.containerButton}>
-
-                <ButtonLogin title={'Entrar'} onPress={() => { navigation.navigate('ListScreen') }} />
-                <ButtonLogin title={'Cadastrar'} onPress={() => { navigation.navigate('RegisterScreen') }} />
-              
+                <ButtonDefault title={'Entrar'} onPress={() => { navigation.navigate('ListScreen') }} />
+                <ButtonDefault title={'Cadastrar'} onPress={() => { navigation.navigate('RegisterScreen') }} />
+                <Button style={styles.botton}
+                    buttonStyle={styles.botton}
+                    titleStyle={styles.botton}
+                    title="Entrar"
+                    type="outline"
+                    raised
+                   
+                />
             </View>
-
         </View>
     )
 }
@@ -58,6 +52,12 @@ const styles = {
         padding: 20,
         width: 250,
         height: 170
+    },
+    botton:{
+        borderColor:'gray',
+        color:'gray',
+        
+       
     }
 
 }

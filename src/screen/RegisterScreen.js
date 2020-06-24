@@ -1,9 +1,8 @@
 import React from 'react'
-import ButtonLogin from '../components/ButtonLogin'
+import ButtonDefault  from '../components/ButtonDefault'
 import { View, Image } from 'react-native'
 import logo4 from '../image/logo4.png'
-import { Icon } from 'react-native-elements'
-import { Input } from 'react-native-elements';
+import InputDefault from '../components/InputDefault';
 
 
 
@@ -17,35 +16,12 @@ const RegisterScreen = ({ navigation }) => {
                     source={logo4}
                 />
             </View>
-
-
             <View>
-                <Input
-                    placeholder='Nome'
-                    leftIcon={
-                        <Icon
-                            name='user'
-                            type='font-awesome'
-                            size={24}
-                            color='black'
-                        />
-
-                    }
-                />
-                <Input
-                    placeholder='Email'
-                    leftIcon={
-                        <Icon
-                            name='email'
-                            type='material'
-                            size={24}
-                            color='black'
-                        />
-                    }
-                />
+                 <InputDefault placeholder={'Nome'} name={'user'} type={'font-awesome'} />
+                 <InputDefault placeholder={'Email'} name={'email'} type={'material'}/>
             </View>
             <View style={styles.containerButton}>
-                <ButtonLogin title={'Cadastrar'} onPress={() => { navigation.navigate('LoginScreen') }} />
+                <ButtonDefault title={'Cadastrar'} onPress={() => { navigation.navigate('LoginScreen') }} />
 
             </View>
 
