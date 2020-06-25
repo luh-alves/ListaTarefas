@@ -4,6 +4,7 @@ import ButtonDefault from '../components/ButtonDefault'
 import TextFieldName from '../components/TextFieldName';
 import AddTasks from '../components/AddTasks';
 import CheckTasks from '../components/CkeckTasks'
+import { connect } from 'react-redux'
 
 
 //import { turnOnOrOff } from '../actions/turnOnOrOff';
@@ -13,7 +14,7 @@ const ListScreen = ({ navigation }) => {
     return (
         <View style={styles.container} >
             {/* meu redux vai passar o nome */}
-            <TextFieldName title={'Luciana'} />
+            <TextFieldName title={'luciana'} />
 
             <View>
                 {/* meu redux vai passar a tarefa para adicionar */}
@@ -50,9 +51,9 @@ const styles = {
 
 }
 
-// const mapStateToProp = (store) => {
-//     return {
-//         on: store.on
-//     }
+// const mapStoreToProps = (store) => {
+//     return { user: store.reducer.user }
+// }
 
+// export default connect(mapStoreToProps)(ListScreen)
 export default ListScreen

@@ -16,6 +16,7 @@ const InputDefault = (props) => {
                         color='black'
                     />
                 }
+                onChangeText={props.onChangeText}
             />
         </View>
     )
