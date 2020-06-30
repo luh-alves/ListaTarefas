@@ -5,20 +5,21 @@ import { Icon } from 'react-native-elements'
 
 const CheckBoxView = (props) => {
     return (
-        <View style={{ flexDirection: 'row' }}>
-            <Text>{props.title}</Text>
+        <View style={styles.container}>
+            <Text style={styles.text}>{props.task.description}</Text>
             <View style={styles.icons}>
                 <Icon
                     type='material'
                     name='create'
                     color='gray'
-                    
                 />
 
                 <Icon
                     type='material'
                     name='clear'
                     color='red'
+                    onPress={() => props.onDeleteTask(props.task.id)}
+
                 />
             </View>
         </View>
@@ -26,25 +27,44 @@ const CheckBoxView = (props) => {
 }
 
 const CheckTasks = (props) => {
-    const [checked, setChecked] = useState(false)
+    const [checked, setChecked] = useState(props.task.completed)
+    const onCheckPressed = () => {
+        console.log('check tasks', props.task)
+        const newChecked = !checked
+        setChecked(newChecked)
+        props.onUpdateTask({ ...props.task, completed: newChecked })
+    }
 
     return (
         <View >
             <CheckBox
-                title={<CheckBoxView title={props.title} />}
+                title={<CheckBoxView task={props.task}
+                    onDeleteTask={props.onDeleteTask}
+                    onUpdateTask={props.onUpdateTask}
+                />}
                 checked={checked}
-                onPress={() => setChecked(!checked)}
+                onPress={onCheckPressed}
+
             />
         </View>
     )
 }
 
 const styles = {
+    container: {
+        flexDirection: 'row',
+        flex: 500,
+    },
+
     icons: {
         flexDirection: 'row',
-        flex: 1,
+        flex: 200,
         justifyContent: 'space-around',
-        marginLeft: 100
+        marginLeft: 50
+    },
+    text: {
+        flex: 300,
+
     }
 }
 export default CheckTasks;

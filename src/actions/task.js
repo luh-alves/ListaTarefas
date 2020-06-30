@@ -1,9 +1,9 @@
 
 //passo para meu store
-const taskAdd = (task) => {
+const taskAdd = (user) => {
     return {
         type: 'ADD_TASK',
-        task
+        user:user
     }
 }
 

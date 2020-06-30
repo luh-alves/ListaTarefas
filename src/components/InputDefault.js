@@ -6,7 +6,7 @@ import { Input } from 'react-native-elements';
 const InputDefault = (props) => {
     return (
         <View>
-            <Input
+            <Input 
                 placeholder={props.placeholder}
                 leftIcon={
                     <Icon
@@ -14,6 +14,8 @@ const InputDefault = (props) => {
                         type={props.type}
                         size={24}
                         color='black'
+                       
+                        
                     />
                 }
                 onChangeText={props.onChangeText}
@@ -21,5 +23,6 @@ const InputDefault = (props) => {
         </View>
     )
 }
+
 
 export default InputDefault;

@@ -6,10 +6,11 @@ import logo4 from '../image/logo4.png'
 import InputDefault from '../components/InputDefault';
 import registerUser from '../api/registerUser'
 
+
 const RegisterScreen = ({ navigation }) => {
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
-
+    
     const doRegister = () => {
         registerUser(nome, email)
             .then(function (response) {
