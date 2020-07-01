@@ -1,15 +1,29 @@
-import React from 'react'
-import ButtonLogin from '../components/ButtonLogin'
-import { View, Image } from 'react-native'
+
+import React, { useState } from 'react'
+import ButtonDefault from '../components/ButtonDefault'
+import { View, Image, Alert } from 'react-native'
 import logo4 from '../image/logo4.png'
-import { Icon } from 'react-native-elements'
-import { Input } from 'react-native-elements';
-
-
+import InputDefault from '../components/InputDefault';
+import registerUser from '../api/registerUser'
 
 const RegisterScreen = ({ navigation }) => {
+    const [nome, setNome] = useState('')
+    const [email, setEmail] = useState('')
 
+    const doRegister = () => {
+        registerUser(nome, email)
+            .then(function (response) {
+                Alert.alert('cadastro realizado com sucesso!')
+                navigation.navigate('LoginScreen')
+                console.log(response);
+            })
+            .catch(function (error) {
+                Alert.alert('Falha ao cadastrar usuario!')
+                console.log(error);
+            });
+    }
     return (
+
         <View style={styles.container} >
             <View style={styles.logoView}>
                 <Image
@@ -17,43 +31,29 @@ const RegisterScreen = ({ navigation }) => {
                     source={logo4}
                 />
             </View>
-
-
             <View>
-                <Input
-                    placeholder='Nome'
-                    leftIcon={
-                        <Icon
-                            name='user'
-                            type='font-awesome'
-                            size={24}
-                            color='black'
-                        />
-
-                    }
+                <InputDefault placeholder={'Nome'} name={'user'} type={'font-awesome'}
+                    value={nome}
+                    onChangeText={nome => setNome(nome)}
                 />
-                <Input
-                    placeholder='Email'
-                    leftIcon={
-                        <Icon
-                            name='email'
-                            type='material'
-                            size={24}
-                            color='black'
-                        />
-                    }
+                <InputDefault placeholder={'Email'} name={'email'} type={'material'}
+                    value={email}
+                    onChangeText={email => setEmail(email)}
                 />
             </View>
             <View style={styles.containerButton}>
-                <ButtonLogin title={'Cadastrar'} onPress={() => { navigation.navigate('LoginScreen') }} />
+                <ButtonDefault title={'Cadastrar'} onPress={doRegister} />
+                <ButtonDefault title={'Voltar'} onPress={() => { navigation.navigate('LoginScreen') }}
+
+                />
 
             </View>
 
         </View>
     )
 }
-const styles = {
 
+const styles = {
     container: {
         alignItems: 'center',
         flex: 1,

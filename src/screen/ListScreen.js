@@ -1,76 +1,40 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
-import ButtonLogin from '../components/ButtonLogin'
-import { CheckBox } from 'react-native-elements'
-import { connect } from 'react-redux';
+import { View } from 'react-native'
+import ButtonDefault from '../components/ButtonDefault'
+import TextFieldName from '../components/TextFieldName';
+import AddTasks from '../components/AddTasks';
+import CheckTasks from '../components/CkeckTasks'
+import { connect } from 'react-redux'
+
+
 //import { turnOnOrOff } from '../actions/turnOnOrOff';
 
 const ListScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container} >
-            <View style={styles.textInput}>
-                <Text style={styles.textName}>Olá, Luciana</Text>
-                <Text>Essas são suas tarefas!</Text>
-            </View>
+            {/* meu redux vai passar o nome */}
+            <TextFieldName title={'luciana'} />
+
             <View>
-                <CheckBox
-                    center
-                    title='O que você tem para fazer?'
-                    iconRight
-                    iconType='material'
-                    checkedIcon='clear'
-                    uncheckedIcon='add'
-                    checkedColor='red'
-                //checked={this.state.checked}
-                />
-                <CheckBox
-                    title='Algoritmos'
-                    iconRight
-                    iconType='material'
-                    //checkedIcon='clear'
-                    uncheckedIcon='clear'
-                    checkedColor='red'
-                //checked={this.state.checked}
-                />
-                <CheckBox
-                    title='Algoritmos'
-                    iconRight
-                    iconType='material'
-                    //checkedIcon='clear'
-                    uncheckedIcon='create'
-                    checkedColor='red'
+                {/* meu redux vai passar a tarefa para adicionar */}
+                <AddTasks title={'O que você tem para fazer?'} />
 
-                //checked={this.state.checked}
-                />
-                <CheckBox
-                    title='Algoritmos'
-
-                //checked={this.state.checked}
-                />
-
-
-
-
-                {/* <CheckBox
+                {/* passar miha tarefa por redux */}
+                <CheckTasks style={styles.textTasks}
+                 title={'algoritmos'} 
                    
-                    checked={this.state.checked}
-                    onPress={() => this.setState({ checked: !this.state.checked })}
-                /> */}
 
-
-
+                />
             </View>
-
-
             <View style={styles.containerButton}>
-                <ButtonLogin title={'Sair'} onPress={() => { navigation.navigate('LoginScreen') }} />
+                <ButtonDefault title={'Sair'} onPress={() => { navigation.navigate('LoginScreen') }} />
             </View>
-
-
         </View>
+
     )
 }
+
 const styles = {
 
     container: {
@@ -81,38 +45,15 @@ const styles = {
     containerButton: {
         flex: 2,
     },
-
-    textInput: {
-        height: 60,
-        width: 238,
-        margin: 20,
-        fontSize: 21,
-        color: '#757575',
-        justifyContent: 'center',
-        paddingLeft: 5,
-        shadowOpacity: 0.37,
-        shadowRadius: 7.49,
-        elevation: 12,
-    },
-    textName: {
-        fontSize: 23
-    },
-
-    logoView: {
-        justifyContent: 'center',
-        alignSelf: 'center',
-        flex: 1
-    },
-    logo: {
-        width: 250,
-        height: 120
+    textTasks:{
+        fontSize: 18
     }
 
 }
 
-const mapStateToProp = (store) => {
-    return {
-        on: store.on
-    }
-}
-export default connect(mapStateToProp)(ListScreen);
+// const mapStoreToProps = (store) => {
+//     return { user: store.reducer.user }
+// }
+
+// export default connect(mapStoreToProps)(ListScreen)
+export default ListScreen

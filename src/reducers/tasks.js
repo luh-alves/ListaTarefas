@@ -6,7 +6,9 @@ const initialState = {
 const taskAdd = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_TASK':
-            return { ...state, on: action.on }
+            return { ...state, on: action.on };
+        case 'UPDATE_TASK':
+            return { ...state, algumaCoisa: action.text }
         default:
             return state
     }
