@@ -47,7 +47,7 @@ const ListScreen = ({ navigation, dispatch, userData, tasks }) => {
 
     }, [])
 
-    
+
 
     return (
         <View style={styles.container} >
