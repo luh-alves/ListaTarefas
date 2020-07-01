@@ -17,6 +17,7 @@ const AddTasks = (props) => {
                     <Icon
                         type='material'
                         name='add'
+                        
                     />
                 }
 
