@@ -1,26 +1,26 @@
-import React,{useState} from 'react'
-import { View, Image , Alert} from 'react-native'
+import React, { useState } from 'react'
+import { View, Image, Alert } from 'react-native'
 import ButtonDefault from '../components/ButtonDefault'
 import logo4 from '../image/logo4.png'
 import InputDefault from '../components/InputDefault';
 import callLogin from '../api/callLogin';
-
+import { AsyncStorage } from "react-native";
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('')
-
     const doLogin = () => {
         callLogin(email)
-            .then(function (response) {
-                navigation.navigate('ListScreen')
-                console.log(response);
+            .then(function (response) {               
+               return AsyncStorage.setItem('user', JSON.stringify(response.data))          
             })
+            .then(function () {               
+                navigation.navigate('ListScreen')          
+             })
             .catch(function (error) {
                 Alert.alert('Usuario Invalido!')
                 console.log(error);
             });
     }
-
     return (
         <View style={styles.container} >
             <View style={styles.logoView}>

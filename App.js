@@ -6,20 +6,20 @@ import { createStackNavigator } from '@react-navigation/stack'
 import LoginScreen from './src/screen/LoginScreen'
 import RegisterScreen from './src/screen/RegisterScreen'
 import ListScreen from './src/screen/ListScreen'
-import { createStore } from './node_modules/redux'
+import { createStore} from './node_modules/redux'
 import {Provider} from 'react-redux'
-import tasks from './src/reducers/tasks'
+import reducer from './src/reducer/reducer'
 
 
 
 const Stack = createStackNavigator()
-const store = createStore(tasks)
+const store = createStore(reducer)
 
 function App() {
   return (
     <Provider store={store}>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen" screenOptions={{ headerShown: false, transitionSpec: { open: config, close: config } }} >
+      <Stack.Navigator initialRouteName="ListScreen" screenOptions={{ headerShown: false, transitionSpec: { open: config, close: config } }} >
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         <Stack.Screen name="ListScreen" component={ListScreen} />

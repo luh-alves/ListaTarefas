@@ -15,6 +15,7 @@ const styles = {
         width: 238,
         margin: 20,
         fontSize: 21,
+        borderRadius: 3,
         color: '#757575',
         justifyContent: 'center',
         paddingLeft: 5,
